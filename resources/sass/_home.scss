@@ -1,0 +1,67 @@
+.ban {
+   background-color: #fff;
+   padding: .8rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .ban--icon {
+       color: $orange;
+       font-size: 1.5rem;
+   }
+   .ban--title {
+        color: #000;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .ban--des {
+        color: #000;
+        font-size: .8rem;
+    }
+}
+
+.list {
+    margin-top: 4rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bolder;
+    .list__hr {
+        display: inline-block;
+        width: 200px;
+        border-top: 1px solid $cyan;
+    }
+}
+
+.product--filter {
+    background-color: $cyan;
+    padding: .5rem;
+}
+
+
+.product--item {
+    margin-top: 1rem;
+    background-color: #fff;
+    padding: 2px;
+}
+.product--item:hover {
+    margin-top: .9rem;
+    background-color: #fff;
+    padding: 2px;
+    box-shadow: 5px 5px 15px #000;
+}
+.product--image {
+    height: 250px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+.cart--image {
+    height: 150px;
+    border: 1px solid #ddd;
+    width: 150px;
+}
+.message {
+    position: relative;
+    width: 250px;
+}

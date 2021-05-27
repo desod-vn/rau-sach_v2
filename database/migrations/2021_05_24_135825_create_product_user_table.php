@@ -17,7 +17,7 @@ class CreateProductUserTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('product_id')->constrained('products');
-            $table->integer('number')->unsigned();
+            $table->bigInteger('number')->default(1);
             $table->integer('bought')->default(0);
         });
     }

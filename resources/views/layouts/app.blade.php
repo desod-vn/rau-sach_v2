@@ -35,10 +35,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">
+                            <a class="nav-link" href="{{ route('product.index') }}">
                                 <i class="fas fa-shopping-cart"></i>
                                 GIỎ HÀNG
-                                <span class="badge badge-pill badge-primary">4</span>
                             </a>
                         </li>
                         @guest
@@ -61,11 +60,14 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if (Auth::user()->role == 'admin')
-                                        <a class="dropdown-item text-danger" href="{{ route('logout') }}">
+                                        <a class="dropdown-item text-danger" href="{{ route('product.create') }}">
                                             <i class="fas fa-plus-square"></i> THÊM MỚI
                                         </a>
+                                        <a class="dropdown-item text-danger" href="{{ route('shipping') }}">
+                                            <i class="fas fa-truck"></i> ĐƠN HÀNG
+                                        </a>
                                     @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                    <a class="dropdown-item" href="{{ route('product.bought') }}">
                                         <i class="far fa-heart"></i> ĐÃ MUA
                                     </a>
 
