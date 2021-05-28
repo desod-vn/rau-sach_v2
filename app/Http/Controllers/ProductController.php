@@ -36,14 +36,6 @@ class ProductController extends Controller
         $this->validate($request, [
             'phone' => 'required|numeric',
             'address' => 'required|string|max:255',
-        ],[
-            'phone.required' => 'Số điện thoại không được để trống.',
-            'phone.numeric' => 'Số điện thoại không hợp lệ.',
-            'phone.max' => 'Số điện thoại chỉ chứa tối đa :max chữ số.',
-
-            'address.required' => 'Địa chỉ thoại không được để trống.',
-            'address.string' => 'Địa chỉ phải là một chuỗi.',
-            'address.max' => 'Địa chỉ chỉ chứa tối đa :max ký tự.',
         ]);
 
         $user->phone = $request->phone;
@@ -53,8 +45,8 @@ class ProductController extends Controller
         $user->shop($user->id);
         
         return redirect()->route('product.bought')
-            ->with('message', 'Sản phẩm đã được tiến hành đóng gói và giao đến đơn vị vận chuyển.
-             Vui lòng theo dõi tại ĐÃ MUA và chuẩn bị số tiền tương ứng để thanh toán khi hàng được giao đến địa chỉ của bạn.');
+            ->with('message', 'The order has been packed and delivered to the shipping unit.
+            Please track BOUGHT and prepare the corresponding amount to pay when the order is delivered to your address.');
     }
 
     public function number(Request $request, Product $product)
@@ -63,12 +55,12 @@ class ProductController extends Controller
         {
             $product->users()->wherePivot('bought', 0)->detach(Auth::user()->id);
             return redirect()->route('product.index')
-                ->with('message', 'Sản phẩm đã được xóa khỏi giỏ hàng thành công.');
+                ->with('message', 'Remove the product in the cart successfully.');
 
         }
         $product->auto(Auth::user()->id, $product->id, $request->number);
         return redirect()->route('product.index')
-            ->with('message', 'Cập nhật số lượng sản phẩm trong giỏ hàng thành công.');
+            ->with('message', 'Update the number of product in the cart successfully.');
     }
 
     public function create()
@@ -83,23 +75,6 @@ class ProductController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,gif|max:5120',
             'unit' => 'required|string',
             'price' => 'required|numeric|min:1',
-        ],[
-            'name.required' => 'Tên sản phẩm không được để trống.',
-            'name.string' => 'Tên sản phẩm phải là một chuỗi.',
-            'name.max' => 'Tên sản phẩm chỉ chứa tối đa :max ký tự.',
-            'name.unique' => 'Tên sản phẩm đã tồn tại.',
-
-            'image.required' => 'Hình ảnh không được để trống.',
-            'image.image' => 'Hình ảnh không hợp lệ.',
-            'image.mimes' => 'Hình ảnh chỉ cho phép dạng:jpg,png,jpeg,gif.',
-            'image.max' => 'Hình ảnh có dung lượng tối đa :max kb.',
-
-            'unit.required' => 'Đơn vị không được để trống.',
-            'unit.string' => 'Đơn vị phẩm phải là một chuỗi.',
-
-            'price.required' => 'Giá tiền không được để trống.',
-            'price.numeric' => 'Giá tiền phải là một số.',
-            'price.min' => 'Giá tiền phải lớn hơn 0.',
         ]);
 
         $product = new Product;
@@ -114,14 +89,14 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('home')->with('message', 'Thêm sản phẩm mới thành công.');
+        return redirect()->route('home')->with('message', 'Add new product successfully.');
     }
 
     public function show(Product $product)
     {
         $product->users()->wherePivot('bought', 0)->detach(Auth::user()->id);
         $product->users()->attach(Auth::user()->id);
-        return redirect()->route('product.index')->with('message', 'Thêm sản phẩm vào giỏ hàng thành công.');
+        return redirect()->route('product.index')->with('message', 'Product was added to cart successfully.');
     }
 
     public function edit(Product $product)
@@ -136,21 +111,6 @@ class ProductController extends Controller
             'image' => 'image|mimes:jpg,png,jpeg,gif|max:5120',
             'unit' => 'required|string',
             'price' => 'required|numeric|min:1',
-        ],[
-            'name.required' => 'Tên sản phẩm không được để trống.',
-            'name.string' => 'Tên sản phẩm phải là một chuỗi.',
-            'name.max' => 'Tên sản phẩm chỉ chứa tối đa :max ký tự.',
-
-            'image.image' => 'Hình ảnh không hợp lệ.',
-            'image.mimes' => 'Hình ảnh chỉ cho phép dạng:jpg,png,jpeg,gif.',
-            'image.max' => 'Hình ảnh có dung lượng tối đa :max kb.',
-
-            'unit.required' => 'Đơn vị không được để trống.',
-            'unit.string' => 'Đơn vị phẩm phải là một chuỗi.',
-
-            'price.required' => 'Giá tiền không được để trống.',
-            'price.numeric' => 'Giá tiền phải là một số.',
-            'price.min' => 'Giá tiền phải lớn hơn 0.',
         ]);
 
         $image = $product->image;
@@ -166,7 +126,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('home')->with('message', 'Cập nhật sản phẩm thành công.');
+        return redirect()->route('home')->with('message', 'Update product successfully.');
     }
 
     public function destroy(Product $product)
@@ -174,6 +134,6 @@ class ProductController extends Controller
         $product->users()->detach();
         $product->delete();
 
-        return redirect()->route('home')->with('message', 'Xóa sản phẩm thành công.');
+        return redirect()->route('home')->with('message', 'Remove product successfully.');
     }
 }

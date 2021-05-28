@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class)->withPivot('number', 'bought');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function shop($user)
     {
         return DB::table('product_user')

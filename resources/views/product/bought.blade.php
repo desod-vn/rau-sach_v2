@@ -16,9 +16,9 @@
             <div class="card">
                 <div class="border-bottom bg-primary text-light">
                     <div class="m-3 h2 font-weight-bold">
-                        Danh sách sản phẩm
+                        BOUGHT
                         <div class="mt-1 h5">
-                            Danh sách các sản phẩm mà bạn đã mua
+                            List of products that you have bought
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="text-center h4">
-                                SẢN PHẨM
+                                PRODUCT
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -35,17 +35,17 @@
                         </div>
                         <div class="col-md-2">
                             <div class="border-primary border-left text-center h4">
-                                SỐ LƯỢNG
+                                QUANTITY
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="border-primary border-left text-center h4">
-                                THANH TOÁN
+                                PAY
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="border-primary border-left text-center h4">
-                                TRẠNG THÁI
+                                STATUS
                             </div>
                         </div>
                     </div>
@@ -79,10 +79,10 @@
                                     <div class="h6 text-center font-weight-bold p-2">
                                         @switch($item->pivot->bought)
                                             @case(1)
-                                            <span class="text-danger">Đang giao hàng</span>
+                                            <span class="text-danger">SHIPPING</span>
                                                 @break
                                             @case(2)
-                                                <span class="text-primary">Đã giao hàng</span>
+                                                <span class="text-primary">SHIPPED</span>
                                                 @break
                                         @endswitch
                                     </div>
@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-md-12 text-center mt-5 d-flex align-items-center justify-content-between">
                             <span class="h2 font-weight-bolder">
-                                TỔNG SỐ TIỀN: 
+                                ALL PAY: 
                                 <span class="text-info">{{ $all }}</span>
                             </span>
                         </div>

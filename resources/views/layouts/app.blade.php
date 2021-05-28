@@ -3,20 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
+    <title>{{ config('app.name', 'AAAMarket') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 </head>
@@ -34,47 +25,48 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('product.index') }}">
-                                <i class="fas fa-shopping-cart"></i>
-                                GIỎ HÀNG
-                            </a>
-                        </li>
-                        @guest
-                            @if (Route::has('login'))
+                        @auth
+                            @if (Auth::user()->role == 'admin')
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">ĐĂNG NHẬP</a>
+                                    <a class="nav-link text-danger" href="{{ route('product.create') }}">
+                                        <i class="fas fa-plus-square"></i> PRODUCT
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" href="{{ route('shipping') }}">
+                                        <i class="fas fa-truck"></i> ORDER
+                                    </a>
                                 </li>
                             @endif
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('product.index') }}">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    CART
+                                </a>
+                            </li>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">ĐĂNG KÝ</a>
-                                </li>
-                            @endif
-                        @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" 
+                                    class="nav-link dropdown-toggle" 
+                                    href="#" 
+                                    role="button" 
+                                    data-toggle="dropdown" 
+                                    aria-haspopup="true" 
+                                    aria-expanded="false" 
+                                    v-pre
+                                >
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if (Auth::user()->role == 'admin')
-                                        <a class="dropdown-item text-danger" href="{{ route('product.create') }}">
-                                            <i class="fas fa-plus-square"></i> THÊM MỚI
-                                        </a>
-                                        <a class="dropdown-item text-danger" href="{{ route('shipping') }}">
-                                            <i class="fas fa-truck"></i> ĐƠN HÀNG
-                                        </a>
-                                    @endif
                                     <a class="dropdown-item" href="{{ route('product.bought') }}">
-                                        <i class="far fa-heart"></i> ĐÃ MUA
+                                        <i class="far fa-heart"></i> BOUGHT
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> ĐĂNG XUẤT
+                                        <i class="fas fa-sign-out-alt"></i> LOGOUT
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -82,7 +74,15 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">REGISTER</a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
             </div>

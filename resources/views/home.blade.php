@@ -21,10 +21,10 @@
                     <i class="fas fa-truck"></i>
                 </div>
                 <div class="ban--title">
-                    GIAO HÀNG TOÀN QUỐC
+                    GLOBAL DELIVERY
                 </div>
                 <div class="ban--des">
-                    Vận chuyển khắp Việt Nam
+                    Shipping around the world
                 </div>
             </div>
         </div>
@@ -34,10 +34,10 @@
                     <i class="fas fa-money-bill-wave-alt"></i>
                 </div>
                 <div class="ban--title">
-                    THANH TOÁN AN TOÀN
+                    SAFE PAYMENT
                 </div>
                 <div class="ban--des">
-                    Nhận hàng tại nhà rồi thanh toán
+                    Receive products at home and pay
                 </div>
             </div>
         </div>
@@ -47,10 +47,10 @@
                     <i class="fas fa-undo-alt"></i>
                 </div>
                 <div class="ban--title">
-                    ĐỔI HÀNG DỄ DÀNG
+                    EASY EXCHANGE
                 </div>
                 <div class="ban--des">
-                    Đổi hàng thoải mái trong 30 ngày
+                    Free exchange within 30 days
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="list">
-                SẢN PHẨM MỚI NHẤT
+                FEATURED PRODUCTS
                 <br />
                 <div class="list__hr"></div>
             </div>
@@ -68,22 +68,22 @@
         <form>
             <div class="row">
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-1">
-                    <input type="text" class="form-control" name="search" placeholder="Nhập tên sản phẩm cần tìm">
+                    <input type="text" class="form-control" name="search" placeholder="Find one product">
                 </div>
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-1">
-                    <input type="number" class="form-control" name="max" placeholder="Giá tối đa">
+                    <input type="number" class="form-control" name="max" placeholder="Max price">
                 </div>
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-1">
                     <select class="form-control" name="sort">
-                        <option value="">Sắp xếp theo</option>
-                        <option value="latest">Mới nhất</option>
-                        <option value="oldest">Cũ nhất</option>
-                        <option value="highest">Giá cao</option>
-                        <option value="lowest">Giá thấp</option>
+                        <option value="">Sort by</option>
+                        <option value="latest">Latest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="highest">Highest</option>
+                        <option value="lowest">Lowest</option>
                     </select>
                 </div>
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 mb-1">
-                    <button type="submit" class="btn btn-block btn-dark font-weight-bolder">Lọc sản phẩm</button>
+                    <button type="submit" class="btn btn-block btn-dark font-weight-bolder">FILTER</button>
                 </div>
             </div>
         </form>
@@ -95,11 +95,11 @@
                 @if (Auth::user() && Auth::user()->role == 'admin')
                     <div class="alert alert-danger" role="alert">
                         <div class="d-flex align-items-center justify-content-between">
-                            <a href="/product/{{ $item->id }}/edit" class="btn btn-outline-dark">
-                                <i class="fas fa-pen"></i> Sửa
+                            <a href="{{ route('product.edit', ['product' => $item->id]) }}" class="btn btn-outline-dark">
+                                <i class="fas fa-pen"></i> EDIT
                             </a>
-                            <a href="/product/{{ $item->id }}/delete" class="btn btn-outline-danger">
-                                <i class="fas fa-eraser"></i> Xóa
+                            <a href="{{ route('product.delete', ['product' => $item->id]) }}" class="btn btn-outline-danger">
+                                <i class="fas fa-eraser"></i> REMOVE
                             </a>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                             <i class="fas fa-clock"></i> {{ $item->created_at->diffForHumans($now) }}
                         </div>
                         <a href="/product/{{ $item->id }}" class="btn btn-primary">
-                            <i class="fas fa-cart-plus"></i> Giỏ hàng
+                            <i class="fas fa-cart-plus"></i> CART
                         </a>
                     </div>
                 </div>
@@ -131,4 +131,8 @@
         </div>
     </div>
 </div>
+
+<!-- Footer -->
+
 @endsection
+

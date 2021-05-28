@@ -5,7 +5,7 @@
     @if(session('message'))
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-info" role="alert">
                 {{ session('message') }}
             </div>
         </div>
@@ -14,16 +14,16 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="border-bottom bg-primary text-light">
+                <div class="border-bottom bg-dark text-light">
                     <div class="m-3 h2 font-weight-bold">
-                        Danh sách sản phẩm
+                        CART
                         <div class="mt-1 h5">
-                            Danh sách các sản phẩm trong giỏ hàng
+                            List of products in cart
                         </div>
-                        <div class="mt-1 text-dark font-weight-bold h5">
-                            Nếu muốn cập nhật số lượng sản phẩm vui lòng chọn số lượng và ấn 
+                        <div class="mt-1 font-weight-bold h5">
+                            If you want to update the product quantity, please change the quantity and press
                             <i class="fas fa-exchange-alt"></i>.
-                            Nếu muốn xóa sản phẩm khỏi giỏ hàng vui lòng chỉnh số lượng về 0.
+                            If you want to remove the product from the cart, please change the quantity to 0.
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="text-center h4">
-                                SẢN PHẨM
+                                PRODUCT
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -40,17 +40,17 @@
                         </div>
                         <div class="col-md-2">
                             <div class="border-primary border-left text-center h4">
-                                GIÁ TIỀN
+                                PRICE
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="border-primary border-left text-center h4">
-                                SỐ LƯỢNG
+                                QUANTITY
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="border-primary border-left text-center h4">
-                                TỔNG
+                                TOTAL
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                         <div class="row border-top border-info p-2">
                             <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="phone">Số điện thoại</label>
+                                        <label for="phone">PHONE:</label>
                                         <input 
                                             type="number" 
                                             class="form-control @error('phone') is-invalid @enderror" 
@@ -126,7 +126,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="address">Địa chỉ</label>
+                                        <label for="address">ADDRESS:</label>
                                         <textarea 
                                             class="form-control @error('address') is-invalid @enderror" 
                                             id="address"
@@ -140,11 +140,11 @@
                                     </div>
                             </div>
                             <div class="col-md-12 text-center mt-5 d-flex align-items-center justify-content-between">
-                                <button type="submit" class="btn btn-lg btn-primary" type="button">
-                                    <i class="fas fa-shopping-basket"></i> ĐẶT HÀNG
+                                <button type="submit" class="btn btn-lg btn-dark" type="button">
+                                    <i class="fas fa-shopping-basket"></i> SHOP NOW
                                 </button>
                                 <span class="h2 font-weight-bolder">
-                                    THANH TOÁN: 
+                                    PAY: 
                                     <span class="text-info">{{ $all }}</span>
                                 </span>
                             </div>

@@ -14,7 +14,10 @@ class HomeController extends Controller
     {
         $product = Product::query();
 
+        $now = Carbon::now();
+        
         $where = [];
+
         if($request->input('search') != '')
             array_push($where, ['name', 'like', '%' . $request->search . '%']);
         if($request->input('max') != '')
@@ -35,10 +38,9 @@ class HomeController extends Controller
             case 'lowest':
                 $product->orderBy('price', 'ASC');
                 break;
-            }
+        }
         $product = $product->latest()->simplePaginate(12);
-        Carbon::setLocale('vi');
-        $now = Carbon::now();
+
         return view('home', compact('product', 'now'));
     }
 

@@ -3,13 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-sx-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card">
-                <div class="border-bottom bg-dark text-light">
+                <div class="border-bottom bg-info text-light">
                     <div class="mt-3 mb-3 h2 font-weight-bold p-2">
-                        Đăng sản phẩm
+                        ADD NEW PRODUCT
                         <div class="mt-1 h5">
-                            Vui lòng điền đầy đủ và chính xác các thông tin.
+                            Please fill out the information completely and accurately.
                         </div>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                     <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label for="email" class="col-md-2 col-form-label text-md-right">Tên sản phẩm</label>
+                            <label for="email" class="col-md-2 col-form-label text-md-right">Product:</label>
 
                             <div class="col-md-10">
                                 <input 
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="image" class="col-md-2 col-form-label text-md-right">Hình ảnh</label>
+                            <label for="image" class="col-md-2 col-form-label text-md-right">Image:</label>
 
                             <div class="col-md-10">
                                 <input 
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="unit" class="col-md-2 col-form-label text-md-right">Đơn vị tính</label>
+                            <label for="unit" class="col-md-2 col-form-label text-md-right">Unit:</label>
 
                             <div class="col-md-4">
                                 <input 
@@ -81,7 +81,7 @@
                                 @enderror
                             </div>
                         
-                            <label for="price" class="col-md-2 col-form-label text-md-right">Giá tiền</label>
+                            <label for="price" class="col-md-2 col-form-label text-md-right">Price:</label>
 
                             <div class="col-md-4">
                                 <input 
@@ -105,7 +105,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-6 mt-5">
                                 <button type="submit" class="btn btn-block btn-info text-light">
-                                    Đăng sản phẩm
+                                    ADD PRODUCT
                                 </button>
                             </div>
                         </div>
