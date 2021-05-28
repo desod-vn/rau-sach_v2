@@ -76,7 +76,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="text-center h5 p-2">
-                                    <form id="logout-form" action="/product/{{ $item->id }}/number" method="POST">
+                                    <form id="logout-form" action="{{ route('product.number', ['product' => $item->id]) }}" method="POST">
                                         @csrf
                                         <div class="input-group">
                                             <input type="number" 
@@ -105,7 +105,7 @@
                         @endif
                     @endforeach
                     @if($all > 0)
-                    <form action="/product/{{ $user->id }}/shop" method="POST">
+                    <form action="{{ route('product.shop', ['user' => $user->id]) }}" method="POST">
                         @csrf
                         <div class="row border-top border-info p-2">
                             <div class="col-md-12">

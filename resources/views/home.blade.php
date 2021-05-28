@@ -133,6 +133,7 @@
 </div>
 
 <!-- Footer -->
+@include('layouts.end')
 
 @endsection
 

@@ -44,7 +44,7 @@ class ProductController extends Controller
         $user->save();
         $user->shop($user->id);
         
-        return redirect()->route('product.bought')
+        return redirect()->route('bought')
             ->with('message', 'The order has been packed and delivered to the shipping unit.
             Please track BOUGHT and prepare the corresponding amount to pay when the order is delivered to your address.');
     }

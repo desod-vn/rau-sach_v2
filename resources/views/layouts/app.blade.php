@@ -25,6 +25,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('about') }}">
+                                <i class="fas fa-info-circle"></i>
+                                ABOUT
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('product.index') }}">
+                                <i class="fas fa-shopping-cart"></i>
+                                CART
+                            </a>
+                        </li>
                         @auth
                             @if (Auth::user()->role == 'admin')
                                 <li class="nav-item">
@@ -38,13 +50,6 @@
                                     </a>
                                 </li>
                             @endif
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('product.index') }}">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    CART
-                                </a>
-                            </li>
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" 
                                     class="nav-link dropdown-toggle" 
@@ -59,7 +64,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('product.bought') }}">
+                                    <a class="dropdown-item" href="{{ route('bought') }}">
                                         <i class="far fa-heart"></i> BOUGHT
                                     </a>
 
