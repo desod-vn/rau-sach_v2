@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 
 /*
@@ -22,15 +23,6 @@ Auth::routes();
 
 //Trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// Thông tin
-Route::get('/about', [CommentController::class, 'index'])->name('about');
-
-    // Bình luận
-    Route::post('/about', [CommentController::class, 'store'])->name('about.comment');
-
-    // Xóa bình luận
-    Route::get('/about/{comment}', [CommentController::class, 'destroy'])->name('about.delete');
 
 // User xem các đơn hàng
 Route::get('/bought', [ProductController::class, 'bought'])->name('bought');
@@ -53,5 +45,17 @@ Route::get('/shipping', [HomeController::class, 'shipping'])->name('shipping');
     // Mua hàng
     Route::post('/product/{user}/shop', [ProductController::class, 'shop'])->name('product.shop');
 
+
+
+// Post
+Route::resource('/post', PostController::class)->except('update', 'destroy');
+    // Sửa
+    Route::post('/post/{post}', [PostController::class, 'update'])->name('post.update');
+    // Xóa
+    Route::get('/post/{post}/delete', [PostController::class, 'destroy'])->name('post.delete');
+    //
+    Route::post('/comment', [CommentController::class, 'store'])->name('post.comment');
+
+    Route::get('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('post.comment.delete');
 
 

@@ -16,6 +16,7 @@ class ProductController extends Controller
         $this->middleware('auth');
         $this->authorizeResource(Product::class, 'product', ['except' => ['index', 'show']]);
     }
+    
 
     public function index()
     {

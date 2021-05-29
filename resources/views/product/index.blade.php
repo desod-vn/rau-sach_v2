@@ -87,9 +87,9 @@
                                                 value="{{ $item->pivot->number }}"
                                             />
                                             <div class="input-group-append">
-                                            <button type="submit" class="btn btn-outline-secondary" type="button">
-                                                <i class="fas fa-exchange-alt"></i>
-                                            </button>
+                                                <button type="submit" class="btn btn-outline-secondary" type="button">
+                                                    <i class="fas fa-exchange-alt"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

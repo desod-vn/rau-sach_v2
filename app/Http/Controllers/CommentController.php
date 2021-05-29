@@ -10,21 +10,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        $comment = Comment::query()->latest()->get();
-        // $comment->user;
-        $now = Carbon::now();
 
-        return view('about', compact('comment', 'now'));
-
-    }
 
     
     public function store(Request $request)
@@ -39,10 +25,12 @@ class CommentController extends Controller
 
         $comment->comment = $request->comment;
         $comment->user_id = Auth::user()->id;
+        $comment->post_id = $request->post;
+
 
         $comment->save();
 
-        return redirect()->route('about')->with('message', 'Add new comment successfully.');
+        return redirect()->route('post.index')->with('message', 'Add new comment successfully.');
     }
 
    
@@ -53,7 +41,7 @@ class CommentController extends Controller
         {
             $comment->delete();
 
-            return redirect()->route('about')->with('message', 'Remove comment successfully.');
+            return redirect()->route('post.index')->with('message', 'Remove comment successfully.');
         }
     }
 }
