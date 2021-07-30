@@ -7,9 +7,9 @@
             <div class="card">
                 <div class="border-bottom bg-danger text-light">
                     <div class="mt-3 mb-3 h2 font-weight-bold p-2">
-                        UPDATE PRODUCT
+                        SỬA SẢN PHẨM
                         <div class="mt-1 h5">
-                            Please fill out the information completely and accurately.
+                            Vui lòng điền đầy đủ thông tin sản phẩm.
                         </div>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                     <form method="POST" action="{{ route('product.update', ['product' => $product->id])}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
-                            <label for="email" class="col-md-2 col-form-label text-md-right">Product:</label>
+                            <label for="email" class="col-md-2 col-form-label text-md-right">Tên sản phẩm:</label>
 
                             <div class="col-md-10">
                                 <input 
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="image" class="col-md-2 col-form-label text-md-right">Image:</label>
+                            <label for="image" class="col-md-2 col-form-label text-md-right">Hình ảnh:</label>
 
                             <div class="col-md-10">
                                 <input 
@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="unit" class="col-md-2 col-form-label text-md-right">Unit:</label>
+                            <label for="unit" class="col-md-2 col-form-label text-md-right">Đơn vị:</label>
 
                             <div class="col-md-4">
                                 <input 
@@ -80,7 +80,7 @@
                                 @enderror
                             </div>
                         
-                            <label for="price" class="col-md-2 col-form-label text-md-right">Price:</label>
+                            <label for="price" class="col-md-2 col-form-label text-md-right">Giá tiền:</label>
 
                             <div class="col-md-4">
                                 <input 
@@ -104,7 +104,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-6 mt-5">
                                 <button type="submit" class="btn btn-block btn-danger text-light">
-                                    UPDATE PRODUCT
+                                    CẬP NHẬT
                                 </button>
                             </div>
                         </div>

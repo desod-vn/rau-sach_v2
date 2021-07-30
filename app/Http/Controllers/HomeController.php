@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Carbon\Carbon;
-use App\Models\User;
+use App\Models\Order;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
@@ -44,23 +44,49 @@ class HomeController extends Controller
         return view('home', compact('product', 'now'));
     }
 
-    public function shipping(User $user)
+    public function orders()
     {
         $this->middleware('auth');
         if(Gate::allows('isAdmin'))
         {
-            $products = $user->bought();
-            return view('shipping', compact('products'));
+            $orders = Order::query()->whereBetween('status', [1, 2])->latest()->get();
+            return view('order', compact('orders'));
         }
     }
 
-    public function shipped(User $user, Request $request)
+    public function confirm(Request $request)
     {
         $this->middleware('auth');
         if(Gate::allows('isAdmin'))
         {
-            $user->shipped($request->user, $request->product);
-            return redirect()->route('shipping');
+            $order = Order::findOrFail($request->order);
+            $order->confirm($request->order);
+            
+            return redirect()->route('order');
+        }
+    }
+
+    public function ship(Request $request)
+    {
+        $this->middleware('auth');
+        if(Gate::allows('isAdmin'))
+        {
+            $order = Order::findOrFail($request->order);
+            $order->ship($request->order);
+
+            return redirect()->route('order');
+        }
+    }
+
+    public function cancel(Request $request)
+    {
+        $this->middleware('auth');
+        if(Gate::allows('isAdmin'))
+        {
+            $order = Order::findOrFail($request->order);
+            $order->cancel($request->order);
+            
+            return redirect()->route('order');
         }
     }
 }

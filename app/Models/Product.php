@@ -18,16 +18,15 @@ class Product extends Model
         'unit',
     ];
 
-    public function users()
+    public function orders()
     {
-        return $this->belongsToMany(User::class)->withPivot('number');
+        return $this->belongsToMany(Order::class)->withPivot('number');
     }
-
-    public function auto($user, $product, $number)
+    
+    public function number($order, $product, $number)
     {
-        return DB::table('product_user')
-                ->where([['user_id', $user], ['product_id', $product]])
+        return DB::table('order_product')
+                ->where([['order_id', $order], ['product_id', $product]])
                 ->update(['number' => $number]);
     }
-
 }

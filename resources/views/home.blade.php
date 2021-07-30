@@ -21,10 +21,10 @@
                     <i class="fas fa-truck"></i>
                 </div>
                 <div class="ban--title">
-                    GLOBAL DELIVERY
+                    GIAO HÀNG
                 </div>
                 <div class="ban--des">
-                    Shipping around the world
+                    Giao hàng nhanh chóng trong ngày
                 </div>
             </div>
         </div>
@@ -34,23 +34,23 @@
                     <i class="fas fa-money-bill-wave-alt"></i>
                 </div>
                 <div class="ban--title">
-                    SAFE PAYMENT
+                    THANH TOÁN
                 </div>
                 <div class="ban--des">
-                    Receive products at home and pay
+                    Nhận hàng và thanh toán tại nhà
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="ban">
                 <div class="ban--icon">
-                    <i class="fas fa-undo-alt"></i>
+                    <i class="fab fa-pagelines"></i>
                 </div>
                 <div class="ban--title">
-                    EASY EXCHANGE
+                    CHẤT LƯỢNG
                 </div>
                 <div class="ban--des">
-                    Free exchange within 30 days
+                    Sản phẩm chất lượng cao, rõ nguồn gốc
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="list">
-                FEATURED PRODUCTS
+                SẢN PHẨM NỔI BẬT
                 <br />
                 <div class="list__hr"></div>
             </div>
@@ -68,22 +68,22 @@
         <form>
             <div class="row">
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-1">
-                    <input type="text" class="form-control" name="search" placeholder="Find one product">
+                    <input type="text" class="form-control" name="search" placeholder="Nhập tên sản phẩm">
                 </div>
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-1">
-                    <input type="number" class="form-control" name="max" placeholder="Max price">
+                    <input type="number" class="form-control" name="max" placeholder="Mức giá tối đa">
                 </div>
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mb-1">
                     <select class="form-control" name="sort">
-                        <option value="">Sort by</option>
-                        <option value="latest">Latest</option>
-                        <option value="oldest">Oldest</option>
-                        <option value="highest">Highest</option>
-                        <option value="lowest">Lowest</option>
+                        <option value="">Sắp xếp</option>
+                        <option value="latest">Mới nhất</option>
+                        <option value="oldest">Cũ nhất</option>
+                        <option value="highest">Giá cao</option>
+                        <option value="lowest">Giá thấp</option>
                     </select>
                 </div>
                 <div class="col-sx-12 col-sm-12 col-md-6 col-lg-2 col-xl-2 mb-1">
-                    <button type="submit" class="btn btn-block btn-dark font-weight-bolder">FILTER</button>
+                    <button type="submit" class="btn btn-block btn-dark font-weight-bolder">LỌC</button>
                 </div>
             </div>
         </form>
@@ -110,11 +110,11 @@
                         {{ $item->name}}
                     </span>
                     <div>
-                        {{ $item->price . ' VND/' . $item->unit  }}
+                        {{ number_format($item->price, 0) . ' VND/' . $item->unit  }}
                     </div>
                     <div class="mt-2 d-flex align-items-center justify-content-between">
                         <div>
-                            <i class="fas fa-clock"></i> {{ $item->created_at->diffForHumans($now) }}
+                            {{-- <i class="fas fa-clock"></i> {{ $item->created_at->diffForHumans($now) }} --}}
                         </div>
                         <a href="/product/{{ $item->id }}" class="btn btn-primary">
                             <i class="fas fa-cart-plus"></i> CART
@@ -131,9 +131,6 @@
         </div>
     </div>
 </div>
-
-<!-- Footer -->
-@include('layouts.end')
 
 @endsection
 
